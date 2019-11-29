@@ -10,6 +10,10 @@ canvas.height = 500;
 const canWid = canvas.width;
 const canHei = canvas.height;
 
+// opisujemy piłkę
+const ballSize = 20; //wielkość piłki
+
+
 function table() {
   ctx.fillStyle = 'royalblue';
   // ustawiamy kolor na royalblue
@@ -20,3 +24,5 @@ function table() {
 
 }
 table()
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(canWid / 2 - ballSize, canHei / 2 - ballSize, ballSize, ballSize);
