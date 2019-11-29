@@ -10,14 +10,29 @@ canvas.height = 500;
 const canWid = canvas.width;
 const canHei = canvas.height;
 
-// opisujemy piłkę
+// opisujemy piłkę i jej pozycję początkową
 const ballSize = 20; //wielkość piłki
+let ballX = canWid / 2 - ballSize;
+let ballY = canHei / 2 - ballSize;
 
+// rysujemy rakietki - początkowa pozycja paletek
+const paddleHeight = 100;
+const paddleWidth = 20;
+
+// określamy pozycję poziomą paletek
+const playerX = 70;
+const iaPaddleX = 910; //czyli jesto 70 + 20 szerokości paletki gracza - szerokość boiska (rysujemy w prawo)
+
+// określamy pozycję początkową paletek w pionie
+let playerY = 200;
+let iaPaddleY = 200;
+
+
+// Funkcje
 const ball = () => {
   ctx.fillStyle = '#ffffff';
-  ctx.fillRect(canWid / 2 - ballSize, canHei / 2 - ballSize, ballSize, ballSize);
+  ctx.fillRect(ballX, ballY, ballSize, ballSize);
 }
-
 const table = () => {
   ctx.fillStyle = 'royalblue';
   // ustawiamy kolor na royalblue
@@ -26,5 +41,19 @@ const table = () => {
   // Lewy góry róg to parametr (0,0) a szerokość w tym przypadku 1000px (taką ma zmienna canWid) i wysokość 500px (bo taką ma zmienna canHei)
   // linie w środku
 }
+const player = () => {
+  ctx.fillStyle = 'yellowgreen';
+  ctx.fillRect(playerX, playerY, paddleWidth, paddleHeight);
+}
+
+const aiPaddle = () => {
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(iaPaddleX, iaPaddleY, paddleWidth, paddleHeight);
+}
+
+// Wywołanie funkcji
 table();
+// tu trzeba pamiętać o kolejności (aby stół nie przykrył piłki)
 ball();
+player();
+aiPaddle();
