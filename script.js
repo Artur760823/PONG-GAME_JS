@@ -13,16 +13,18 @@ const canHei = canvas.height;
 // opisujemy piłkę
 const ballSize = 20; //wielkość piłki
 
+const ball = () => {
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(canWid / 2 - ballSize, canHei / 2 - ballSize, ballSize, ballSize);
+}
 
-function table() {
+const table = () => {
   ctx.fillStyle = 'royalblue';
   // ustawiamy kolor na royalblue
   ctx.fillRect(0, 0, canWid, canHei)
   // Metoda fillRect wymaga podania 4 argumentów. Pierwsze dwa to parametry startowe na osi x i y. Drugie dwa to szerokść (oś x) i wysokośći (oś y).
   // Lewy góry róg to parametr (0,0) a szerokość w tym przypadku 1000px (taką ma zmienna canWid) i wysokość 500px (bo taką ma zmienna canHei)
   // linie w środku
-
 }
-table()
-ctx.fillStyle = '#ffffff';
-ctx.fillRect(canWid / 2 - ballSize, canHei / 2 - ballSize, ballSize, ballSize);
+table();
+ball();
