@@ -30,11 +30,17 @@ let iaPaddleY = 200;
 const lineWidth = 6;
 const lineHeight = 18;
 
+// Prędkość piłki
+let ballSpeedX = 1;
+let ballSpeedY = 1;
 
 // Funkcje
 const ball = () => {
   ctx.fillStyle = '#ffffff';
   ctx.fillRect(ballX, ballY, ballSize, ballSize);
+
+  ballX += ballSpeedX;
+  ballY += ballSpeedY;
 }
 const table = () => {
   ctx.fillStyle = 'royalblue';
@@ -58,9 +64,15 @@ const aiPaddle = () => {
   ctx.fillRect(iaPaddleX, iaPaddleY, paddleWidth, paddleHeight);
 }
 
-// Wywołanie funkcji
-table();
-// tu trzeba pamiętać o kolejności (aby stół nie przykrył piłki)
-ball();
-player();
-aiPaddle();
+function game() {
+  // Wywołanie funkcji
+  table();
+  // tu trzeba pamiętać o kolejności (aby stół nie przykrył piłki)
+  ball();
+  player();
+  aiPaddle();
+}
+
+// funkcja umożliwiająca wywoaływanie innej co określonyc czas
+// Animujemy cały stół dzięki zamknięciu wszystkiego w game, czyli wywołujemy stół, paletki i piłkę od nowa
+setInterval(game, 1000 / 60);
