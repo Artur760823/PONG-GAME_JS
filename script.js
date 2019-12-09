@@ -27,6 +27,9 @@ const iaPaddleX = 910; //czyli jesto 70 + 20 szerokości paletki gracza - szerok
 let playerY = 200;
 let iaPaddleY = 200;
 
+const lineWidth = 6;
+const lineHeight = 18;
+
 
 // Funkcje
 const ball = () => {
@@ -40,6 +43,10 @@ const table = () => {
   // Metoda fillRect wymaga podania 4 argumentów. Pierwsze dwa to parametry startowe na osi x i y. Drugie dwa to szerokść (oś x) i wysokośći (oś y).
   // Lewy góry róg to parametr (0,0) a szerokość w tym przypadku 1000px (taką ma zmienna canWid) i wysokość 500px (bo taką ma zmienna canHei)
   // linie w środku
+  for (let linePosition = 20; linePosition < canHei; linePosition += 30) {
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(canWid / 2 - lineWidth * 2, linePosition, lineWidth, lineHeight);
+  }
 }
 const player = () => {
   ctx.fillStyle = 'yellowgreen';
