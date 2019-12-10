@@ -41,6 +41,14 @@ const ball = () => {
 
   ballX += ballSpeedX;
   ballY += ballSpeedY;
+
+  // Określamy granice poruszania się piłki i odbicie
+  if (ballY <= 0 || ballY + ballSize >= canHei) {
+    ballSpeedY = -ballSpeedY;
+  }
+  if (ballX <= 0 || ballX + ballSize >= canWid) {
+    ballSpeedX = -ballSpeedX;
+  }
 }
 const table = () => {
   ctx.fillStyle = 'royalblue';
@@ -64,6 +72,24 @@ const aiPaddle = () => {
   ctx.fillRect(iaPaddleX, iaPaddleY, paddleWidth, paddleHeight);
 }
 
+// Poruszanie paletką
+
+
+function playerPosition(event) {
+  playerY = event.offsetY - paddleHeight / 2;
+
+  // Zabezpieczenie wyjechania paletki od dołu
+  if (playerY >= canHei - paddleHeight) {
+    playerY = canHei - paddleHeight
+  }
+  // Zabespiecznie od góry
+  if (playerY <= 0) {
+    playerY = 0;
+  }
+}
+
+canvas.addEventListener('mousemove', playerPosition);
+
 function game() {
   // Wywołanie funkcji
   table();
@@ -76,3 +102,4 @@ function game() {
 // funkcja umożliwiająca wywoaływanie innej co określonyc czas
 // Animujemy cały stół dzięki zamknięciu wszystkiego w game, czyli wywołujemy stół, paletki i piłkę od nowa
 setInterval(game, 1000 / 60);
+// setinterval ustawiamy na powtarzania się 60 razy na sekundę
