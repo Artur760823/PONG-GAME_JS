@@ -45,9 +45,11 @@ const ball = () => {
   // Określamy granice poruszania się piłki i odbicie
   if (ballY <= 0 || ballY + ballSize >= canHei) {
     ballSpeedY = -ballSpeedY;
+    speedUp();
   }
   if (ballX <= 0 || ballX + ballSize >= canWid) {
     ballSpeedX = -ballSpeedX;
+    speedUp();
   }
 }
 const table = () => {
@@ -85,6 +87,22 @@ function playerPosition(event) {
   // Zabespiecznie od góry
   if (playerY <= 0) {
     playerY = 0;
+  }
+  iaPaddleY = playerY;
+}
+
+function speedUp() {
+  // prędkość X
+  if (ballSpeedX > 0 && ballSpeedX <= 16) {
+    ballSpeedX += 0.2;
+  } else if (ballSpeedX < 0 && ballSpeedX >= -16) {
+    ballSpeedX -= 0.2;
+  }
+  // prędkość Y
+  if (ballSpeedY > 0 && ballSpeedY <= 16) {
+    ballSpeedY += 0.2;
+  } else if (ballSpeedY < 0 && ballSpeedY >= -16) {
+    ballSpeedY -= 0.2;
   }
 }
 
