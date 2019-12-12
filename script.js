@@ -88,7 +88,7 @@ function playerPosition(event) {
   if (playerY <= 0) {
     playerY = 0;
   }
-  iaPaddleY = playerY;
+  // iaPaddleY = playerY;
 }
 
 function speedUp() {
@@ -106,6 +106,11 @@ function speedUp() {
   }
 }
 
+// IA
+function aiPosition() {
+
+}
+
 canvas.addEventListener('mousemove', playerPosition);
 
 function game() {
@@ -115,6 +120,7 @@ function game() {
   ball();
   player();
   aiPaddle();
+  aiPosition();
 }
 
 // funkcja umożliwiająca wywoaływanie innej co określonyc czas
